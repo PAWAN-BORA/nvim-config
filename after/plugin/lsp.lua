@@ -1,4 +1,6 @@
 local lsp_zero = require('lsp-zero')
+require("mason").setup()
+require("mason-lspconfig").setup()
 
 
 local lsp_attach = function(client, bufnr)
@@ -12,6 +14,7 @@ local lsp_attach = function(client, bufnr)
   vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
   vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
   vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+  vim.keymap.set('n', '<leader>i', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
   vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
   vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
 end
@@ -23,6 +26,7 @@ lsp_zero.extend_lspconfig({
 });
 
 require('lspconfig').lua_ls.setup({});
+require('lspconfig').svelte.setup({});
 require 'lspconfig'.rust_analyzer.setup {
   settings = {
     ['rust-analyzer'] = {
@@ -43,6 +47,7 @@ require 'lspconfig'.ts_ls.setup({
   },
 });
 require'lspconfig'.css_variables.setup({});
+require'lspconfig'.tailwindcss.setup({});
 local cmp = require("cmp")
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 cmp.setup({

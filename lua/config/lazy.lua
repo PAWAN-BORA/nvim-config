@@ -22,10 +22,11 @@ require("lazy").setup({
       'nvim-telescope/telescope.nvim', tag = '0.1.8',
       dependencies = { 'nvim-lua/plenary.nvim' }
     },
-    { "rose-pine/neovim", name = "rose-pine" },
-    { "nvim-treesitter/nvim-treesitter", 
+    {"rose-pine/neovim", name = "rose-pine"},
+    {"navarasu/onedark.nvim"},
+    {"nvim-treesitter/nvim-treesitter",
       build = function()
-	require("nvim-treesitter.install").update({ with_sync = true })()
+        require("nvim-treesitter.install").update({ with_sync = true })()
       end,
     },
     {
@@ -41,6 +42,8 @@ require("lazy").setup({
     {'hrsh7th/nvim-cmp'},
     {"numToStr/Comment.nvim"},
     {"JoosepAlviste/nvim-ts-context-commentstring"},
+    {"williamboman/mason.nvim"},
+    {"williamboman/mason-lspconfig.nvim"},
     {
       'windwp/nvim-autopairs',
       event = "InsertEnter",

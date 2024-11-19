@@ -1,5 +1,20 @@
+--[[ vim.opt.clipboard = "unnamedplus";
+vim.g.clipboard = {
+    name = 'clip',
+    copy = {
+        ['+'] = 'clip.exe',
+        ['*'] = 'clip.exe',
+    },
+    paste = {
+        ['+'] = '/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -c Get-Clipboard',
+        ['*'] = '/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -c Get-Clipboard',
+    },
+    cache_enabled = 0,
+} ]]
 vim.opt.nu = true;
 vim.opt.relativenumber = true;
+
+
 
 vim.opt.tabstop = 2;
 vim.opt.shiftwidth = 2;
