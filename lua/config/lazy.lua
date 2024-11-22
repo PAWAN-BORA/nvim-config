@@ -24,6 +24,12 @@ require("lazy").setup({
     },
     {"rose-pine/neovim", name = "rose-pine"},
     {"navarasu/onedark.nvim"},
+    {
+      "folke/tokyonight.nvim",
+      lazy = false,
+      priority = 1000,
+      opts = {},
+    },
     {"nvim-treesitter/nvim-treesitter",
       build = function()
         require("nvim-treesitter.install").update({ with_sync = true })()
