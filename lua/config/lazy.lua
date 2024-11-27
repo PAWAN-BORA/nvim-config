@@ -56,5 +56,5 @@ require("lazy").setup({
       config = true
     }
   },
-  checker = { enabled = true },
+  checker = { enabled = true, notify = false },
 });
