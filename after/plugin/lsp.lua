@@ -25,9 +25,10 @@ lsp_zero.extend_lspconfig({
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
 });
 
-require('lspconfig').lua_ls.setup({});
-require('lspconfig').svelte.setup({});
-require 'lspconfig'.rust_analyzer.setup {
+local nvim_lsp = require("lspconfig");
+nvim_lsp.lua_ls.setup({});
+nvim_lsp.svelte.setup({});
+nvim_lsp.rust_analyzer.setup {
   settings = {
     ['rust-analyzer'] = {
       diagnostics = {
@@ -40,14 +41,25 @@ require 'lspconfig'.rust_analyzer.setup {
   end
 
 }
-require 'lspconfig'.ts_ls.setup({
-  filetypes = {
-    "javascript",
-    "typescript",
-  },
+local function isDenoProject()
+  return vim.fn.filereadable('deno.json') ==1 or vim.fn.filereadable('deno.jsonc') == 1
+end
+
+if(isDenoProject()) then
+  nvim_lsp.denols.setup({ });
+else
+  nvim_lsp.ts_ls.setup({
+    filetypes = {
+      "javascript",
+      "typescript",
+    },
+  });
+end
+
+nvim_lsp.css_variables.setup({});
+nvim_lsp.tailwindcss.setup({
+  root_dir = nvim_lsp.util.root_pattern("tailwind.config.js")
 });
-require'lspconfig'.css_variables.setup({});
-require'lspconfig'.tailwindcss.setup({});
 local cmp = require("cmp")
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 cmp.setup({
