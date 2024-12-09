@@ -40,6 +40,10 @@ require("lazy").setup({
       branch = "harpoon2",
       dependencies = { "nvim-lua/plenary.nvim" }
     },
+    {
+      'nvim-lualine/lualine.nvim',
+      dependencies = { 'nvim-tree/nvim-web-devicons' }
+    },
     {"mbbill/undotree"},
     {"tpope/vim-fugitive"},
     {'VonHeikemen/lsp-zero.nvim', branch = 'v4.x'},
