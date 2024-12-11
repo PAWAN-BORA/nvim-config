@@ -45,6 +45,7 @@ local function isDenoProject()
   return vim.fn.filereadable('deno.json') ==1 or vim.fn.filereadable('deno.jsonc') == 1
 end
 
+
 if(isDenoProject()) then
   nvim_lsp.denols.setup({ });
 else
@@ -52,6 +53,7 @@ else
     filetypes = {
       "javascript",
       "typescript",
+      "typescriptreact",
     },
   });
 end
