@@ -45,7 +45,6 @@ local function isDenoProject()
   return vim.fn.filereadable('deno.json') ==1 or vim.fn.filereadable('deno.jsonc') == 1
 end
 
-
 if(isDenoProject()) then
   nvim_lsp.denols.setup({ });
 else
@@ -58,6 +57,18 @@ else
   });
 end
 
+local configs = require 'lspconfig.configs'
+if not configs.markdown_lsp then
+  configs.markdown_lsp = {
+    default_config = {
+      cmd = {"deno", "run", "--allow-read", "--allow-write", "/home/pawan/projects/deno/markdown_lsp/main.ts"},
+      filetypes = {'markdown'},
+      single_file_support=true,
+      settings = {},
+    },
+  }
+end
+nvim_lsp.markdown_lsp.setup({ })
 nvim_lsp.css_variables.setup({});
 nvim_lsp.tailwindcss.setup({
   root_dir = nvim_lsp.util.root_pattern("tailwind.config.js")
