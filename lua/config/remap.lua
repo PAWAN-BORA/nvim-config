@@ -37,7 +37,7 @@ vim.keymap.set("n", "<leader>t", function ()
     end
      win_id = vim.api.nvim_open_win(buf_id, true, {
       split = "below",
-      win = 0,
+      win = -1,
       height = 8,
     })
     if(not buf_exit) then
