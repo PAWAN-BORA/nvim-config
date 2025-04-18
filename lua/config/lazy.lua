@@ -60,6 +60,10 @@ require("lazy").setup({
       config = true
     },
     {
+      "mfussenegger/nvim-lint",
+      event = { "BufReadPre", "BufNewFile" },
+    },
+    --[[ {
       'dense-analysis/ale',
       config = function()
         -- Configuration goes here.
@@ -72,7 +76,7 @@ require("lazy").setup({
           lua = {'lua_language_server'}
         }
       end
-    },
+    }, ]]
     {
       'stevearc/oil.nvim',
       ---@module 'oil'
