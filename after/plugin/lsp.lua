@@ -33,12 +33,21 @@ nvim_lsp.rust_analyzer.setup {
     ['rust-analyzer'] = {
       diagnostics = {
         enable = false,
-      }
+      },
+      procMacro = {
+        ignored = {
+          leptos_macro = {
+            -- optional: --
+            -- "component",
+            "server",
+          },
+        },
+      },
     }
   },
-  on_attach = function (client, bufnr)
-    client.server_capabilities.documentFormattingProvider = false
-  end
+  -- on_attach = function (client, bufnr)
+  --   client.server_capabilities.documentFormattingProvider = false
+  -- end
 
 }
 local function isDenoProject()
@@ -69,9 +78,24 @@ if not configs.markdown_lsp then
   }
 end
 nvim_lsp.markdown_lsp.setup({ })
+
+
+if not configs.html_lsp then
+  configs.html_lsp = {
+    default_config = {
+      -- cmd = { "sh", "-c", "RUSTFLAGS='-A warnings' cargo run --manifest-path /home/pawan/projects/rust/html_lsp/Cargo.toml" },
+      cmd = {"/home/pawan/projects/rust/html_lsp/target/release/html_lsp"},
+      filetypes = {'html'},
+      single_file_support=true,
+      settings = {},
+    },
+  }
+end
+nvim_lsp.html_lsp.setup({ })
+
 nvim_lsp.css_variables.setup({});
 nvim_lsp.tailwindcss.setup({
-  root_dir = nvim_lsp.util.root_pattern("tailwind.config.js")
+  root_dir = nvim_lsp.util.root_pattern("tailwind.config.js", "tailwind.config.ts")
 });
 local cmp = require("cmp")
 local cmp_select = { behavior = cmp.SelectBehavior.Select }

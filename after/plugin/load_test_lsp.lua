@@ -15,8 +15,10 @@ local lsp_attach = function(client, bufnr)
   vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
 end
 -- local client = vim.lsp.start_client {
---   name = "markdown_lsp",
---   cmd = {"deno", "run", "--allow-read", "--allow-write", "/home/pawan/projects/deno/markdown_lsp/main.ts"},
+--   name = "html_lsp",
+--   cmd = {"/home/pawan/projects/rust/html_lsp/target/release/html_lsp"},
+--   -- cmd = {"cargo", "run", "--manifest-path", "/home/pawan/projects/rust/html_lsp/Cargo.toml"},
+--   -- cmd = { "sh", "-c", "RUSTFLAGS='-A warnings' cargo run --manifest-path /home/pawan/projects/rust/html_lsp/Cargo.toml" },
 --   on_attach = lsp_attach
 -- }
 --
@@ -27,7 +29,7 @@ end
 -- end
 --
 -- vim.api.nvim_create_autocmd("FileType", {
---   pattern = "markdown",
+--   pattern = "html",
 --   callback = function ()
 --     vim.lsp.buf_attach_client(0, client)
 --   end,
