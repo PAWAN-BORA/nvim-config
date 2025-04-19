@@ -15,7 +15,3 @@ vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
     lint.try_lint()
   end,
 })
-
-print("Hello from lint..")
-print("Hello from lint..")
-print("Hello from lint..")
