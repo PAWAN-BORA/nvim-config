@@ -27,11 +27,21 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap.set('n', 'gD', lsp.buf.declaration, opts)
     keymap.set('n', 'gi', lsp.buf.implementation, opts)
     keymap.set('n', 'go', lsp.buf.type_definition, opts)
-    keymap.set('n', 'gr', lsp.buf.references, opts)
+    -- keymap.set('n', 'gr', lsp.buf.references, opts)
     keymap.set('n', 'gs', lsp.buf.signature_help, opts)
     keymap.set('n', '<F2>', lsp.buf.rename, opts)
     keymap.set('n', '<leader>i', vim.diagnostic.open_float, opts)
     -- keymap.set({ 'n', 'x' }, '<F3>', lsp.buf.format({ async = true }), opts)
     keymap.set('n', '<F4>', lsp.buf.code_action, opts)
   end
-})
+});
+
+local builtin = require('telescope.builtin');
+keymap.set('n', '<leader>fs', builtin.find_files, {})
+keymap.set('n', '<leader>bs', builtin.buffers, {})
+keymap.set('n', '<leader>gs', builtin.live_grep, {})
+keymap.set('n', '<C-p>', builtin.git_files, {})
+keymap.set('n', 'gr', builtin.lsp_references, {})
+keymap.set('n', '<leader>ps', function()
+  builtin.grep_string({search = vim.fn.input("Grep > ")});
+end)
