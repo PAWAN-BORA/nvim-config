@@ -15,77 +15,18 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Make sure to setup `mapleader` and `maplocalleader` before
+-- loading lazy.nvim so that mappings are correct.
+-- This is also a good place to setup other settings (vim.opt)
 
 require("lazy").setup({
   spec = {
-    {
-      'nvim-telescope/telescope.nvim', tag = '0.1.8',
-      dependencies = { 'nvim-lua/plenary.nvim' }
-    },
-    {"rose-pine/neovim", name = "rose-pine"},
-    {"navarasu/onedark.nvim"},
-    {
-      "folke/tokyonight.nvim",
-      lazy = false,
-      priority = 1000,
-      opts = {},
-    },
-    {"nvim-treesitter/nvim-treesitter",
-      build = function()
-        require("nvim-treesitter.install").update({ with_sync = true })()
-      end,
-    },
-    {
-      "ThePrimeagen/harpoon",
-      branch = "harpoon2",
-      dependencies = { "nvim-lua/plenary.nvim" }
-    },
-    {
-      'nvim-lualine/lualine.nvim',
-      dependencies = { 'nvim-tree/nvim-web-devicons' }
-    },
-    {"mbbill/undotree"},
-    {"tpope/vim-fugitive"},
-    {'VonHeikemen/lsp-zero.nvim', branch = 'v4.x'},
-    {'neovim/nvim-lspconfig'},
-    {'hrsh7th/cmp-nvim-lsp'},
-    {'hrsh7th/nvim-cmp'},
-    {"numToStr/Comment.nvim"},
-    {"JoosepAlviste/nvim-ts-context-commentstring"},
-    {"williamboman/mason.nvim"},
-    {"williamboman/mason-lspconfig.nvim"},
-    {
-      'windwp/nvim-autopairs',
-      event = "InsertEnter",
-      config = true
-    },
-    {
-      "mfussenegger/nvim-lint",
-      event = { "BufReadPre", "BufNewFile" },
-    },
-    --[[ {
-      'dense-analysis/ale',
-      config = function()
-        -- Configuration goes here.
-        local g = vim.g
-
-        g.ale_ruby_rubocop_auto_correct_all = 1
-
-        g.ale_linters = {
-          ruby = {'rubocop', 'ruby'},
-          lua = {'lua_language_server'}
-        }
-      end
-    }, ]]
-    {
-      'stevearc/oil.nvim',
-      ---@module 'oil'
-      ---@type oil.SetupOpts
-      opts = {},
-      -- Optional dependencies
-      dependencies = { { "echasnovski/mini.icons", opts = {} } },
-      -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
-    }
+    -- import your plugins
+    {import = "config.plugins"}
   },
-  checker = { enabled = true, notify = false },
-});
+  -- Configure any other settings here. See the documentation for more details.
+  -- colorscheme that will be used when installing plugins.
+  -- install = { colorscheme = { "habamax" } },
+  -- automatically check for plugin updates
+  -- checker = { enabled = true },
+})
