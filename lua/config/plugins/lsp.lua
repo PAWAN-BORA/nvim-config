@@ -17,6 +17,7 @@ return {
           }
         },
         ts_ls = {},
+        eslint ={},
       }
     },
     config=function(_, opts)

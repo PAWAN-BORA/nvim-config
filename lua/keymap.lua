@@ -16,6 +16,8 @@ keymap.set("x", "<leader>p", "\"_dP")
 
 keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 keymap.set("v", "<leader>s", [[:s/\<<C-r>"\>/<C-r>"/gI<Left><Left><Left>]])
+keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+-- keymap.set("n", "-", ":lua MiniFiles.open()<CR>")
 
 
 vim.api.nvim_create_autocmd("LspAttach", {
