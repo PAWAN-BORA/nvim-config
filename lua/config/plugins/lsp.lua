@@ -18,6 +18,7 @@ return {
         },
         ts_ls = {},
         eslint ={},
+        tailwindcss={}
       }
     },
     config=function(_, opts)
