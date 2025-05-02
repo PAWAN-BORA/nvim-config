@@ -19,7 +19,7 @@ keymap.set("v", "<leader>s", [[:s/\<<C-r>"\>/<C-r>"/gI<Left><Left><Left>]])
 keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 -- keymap.set("n", "-", ":lua MiniFiles.open()<CR>")
 
-
+-- LPS key mappings
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local opts = { buffer = args.buf }
@@ -38,6 +38,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end
 });
 
+-- Telescope key mappings
 local builtin = require('telescope.builtin');
 keymap.set('n', '<leader>fs', builtin.find_files, {})
 keymap.set('n', '<leader>bs', builtin.buffers, {})
@@ -46,4 +47,14 @@ keymap.set('n', '<C-p>', builtin.git_files, {})
 keymap.set('n', 'gr', builtin.lsp_references, {})
 keymap.set('n', '<leader>ps', function()
   builtin.grep_string({search = vim.fn.input("Grep > ")});
+end)
+
+-- Gitsigns key mappings
+local gitsigns = require('gitsigns');
+keymap.set('n', '<leader>gb', gitsigns.blame_line, {})
+keymap.set('n', '<leader>gfb', gitsigns.blame, {})
+keymap.set('n', '<leader>gp', gitsigns.preview_hunk)
+keymap.set('n', '<leader>gtb', gitsigns.toggle_current_line_blame)
+keymap.set('n', '<leader>gd', function()
+  gitsigns.diffthis('~')
 end)
