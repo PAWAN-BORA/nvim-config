@@ -58,3 +58,9 @@ keymap.set('n', '<leader>gtb', gitsigns.toggle_current_line_blame)
 keymap.set('n', '<leader>gd', function()
   gitsigns.diffthis('~')
 end)
+
+
+-- terminal keymap
+keymap.set('n', '<C-t>', "<CMD>ToggleTerm<CR>", {})
+keymap.set('t', '<Esc>', "<C-\\><C-N>", {})
+keymap.set('t', '<C-t>', "<CMD>ToggleTerm<CR>", {})
