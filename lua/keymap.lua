@@ -62,5 +62,4 @@ end)
 
 -- terminal keymap
 keymap.set('n', '<C-t>', "<CMD>ToggleTerm<CR>", {})
-keymap.set('t', '<Esc>', "<C-\\><C-N>", {})
-keymap.set('t', '<C-t>', "<CMD>ToggleTerm<CR>", {})
+keymap.set('t', '<Esc><Esc>', "<CMD>ToggleTerm<CR>", {})

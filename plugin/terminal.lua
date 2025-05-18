@@ -36,6 +36,7 @@ local function toggleTerm()
     state.floating = createTerminal({buf=state.floating.buf})
     if vim.bo[state.floating.buf].buftype ~= "terminal" then
       vim.cmd.term()
+      vim.cmd.startinsert()
     end
   else
     vim.api.nvim_win_hide(win_id)
