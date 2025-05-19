@@ -17,7 +17,8 @@ return {
       },
       ts_ls = {},
       eslint ={},
-      tailwindcss={}
+      tailwindcss={},
+      rust_analyzer = {}
     }
   },
   config=function(_, opts)
