@@ -6,7 +6,8 @@ return {
   opts = {
     keymap = {
       preset = 'default',
-      ["<CR>"] = {"accept", "fallback"}
+      ["<CR>"] = {"accept", "fallback"},
+      ['<C-y>'] = { 'show', 'show_documentation', 'hide_documentation' },
     },
 
     appearance = {

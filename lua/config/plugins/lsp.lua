@@ -18,7 +18,8 @@ return {
       ts_ls = {},
       eslint ={},
       tailwindcss={},
-      rust_analyzer = {}
+      rust_analyzer = {},
+      pyright = {}
     }
   },
   config=function(_, opts)
